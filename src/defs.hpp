@@ -19,3 +19,7 @@
 
 /** VISCOSITY **/
 //#define ENABLE_VISCOSITY
+
+/** NSIGHT PROFILING **/
+#define ENABLE_NSIGHT
+

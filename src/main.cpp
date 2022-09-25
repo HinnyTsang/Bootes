@@ -30,6 +30,10 @@
 
 #include "setup/shearboxdisk.cpp"
 
+#ifdef ENABLE_NSIGHT
+    #include "nvtx3/nvToolsExt.h”
+#endif
+
 void doloop(double &ot, double &next_exit_loop_time, mesh &m, double &CFL){
     int loop_cycle = 0;
     while (ot < next_exit_loop_time){
@@ -308,6 +312,11 @@ int main(int argc, char *argv[]){
 
     std::cout << "setup complete" << std::endl << flush;
     /** main loop **/
+
+    #ifdef ENABLE_NSIGHT
+        nvtxRangePushA("main()");
+    #endif
+
     while (ot < t_tot){
         // step 1: determine when to exit the time integration loop
         next_exit_loop_time = min(next_output_time, t_tot);
@@ -423,5 +432,8 @@ int main(int argc, char *argv[]){
         cycle += 1;
         cout << "main cycle: " << cycle << "    time: " << ot << endl << flush;
     }
+    #ifdef ENABLE_NSIGHT
+        nvtxRangePop();
+    #endif
     return 0;
 }
