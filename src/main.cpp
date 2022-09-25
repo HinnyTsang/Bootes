@@ -31,7 +31,7 @@
 #include "setup/shearboxdisk.cpp"
 
 #ifdef ENABLE_NSIGHT
-    #include "nvtx3/nvToolsExt.h”
+    #include <nvtx3/nvToolsExt.h>
 #endif
 
 void doloop(double &ot, double &next_exit_loop_time, mesh &m, double &CFL){

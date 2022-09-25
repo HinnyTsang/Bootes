@@ -1,5 +1,7 @@
 CC := nvc++
-CFLAGS := -g -lhdf5 -lhdf5_cpp -acc -Minfo=accel -gpu=managed
+HDF5_INCLUDE := ~/hdf5/include
+HDF5_LIBRARY := ~/hdf5/lib
+CFLAGS := -g $(HDF5_INCLUDE) $(HDF5_LIBRARY) -lhdf5 -lhdf5_cpp -acc -Minfo=accel -gpu=managed
 EXE_DIR := bin/
 EXECUTABLE := $(EXE_DIR)bootes.out
 
